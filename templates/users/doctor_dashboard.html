@@ -2,3 +2,7 @@
 <p>User Type: Doctor</p>
 <p>Email: {{ user.email }}</p>
 <p>City: {{ user.city }}</p>
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
