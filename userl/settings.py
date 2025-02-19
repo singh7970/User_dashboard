@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-cv@g8u8$dlb!-zx@67yellmiygj(a^danb@&s$ox19%hsjha_@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['user-dashboard-lzlo.onrender.com','127.0.0.1','localhost']
 
 
 # Application definition
@@ -68,7 +68,7 @@ TEMPLATES = [
         },
     },
 ]
-
+import os
 WSGI_APPLICATION = 'userl.wsgi.application'
 
 
@@ -120,8 +120,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
