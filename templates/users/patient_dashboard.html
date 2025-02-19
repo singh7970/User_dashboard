@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+        .profile-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+        }
+        .profile-card h2 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        .profile-card p {
+            font-size: 16px;
+            color: #444;
+            margin: 8px 0;
+            padding: 8px;
+            background: #f8f8f8;
+            border-radius: 6px;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #71e8f1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card">
+        <h2>Welcome, <span class="highlight">{{ user.first_name }}</span>!</h2>
+        <h2>Dashboard, <span class="highlight">{{ user.first_name }}</span>!</h2>
+
+        <h2>Welcome, <span class="highlight">{{ user.first_name }}</span>!</h2>
+        <p><strong>User Type:</strong> <span class="highlight">Patient</span></p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>City:</strong> {{ user.city }}</p>
+    </div>
+
+</body>
+</html>
