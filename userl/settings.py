@@ -88,12 +88,30 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT', '3306'),
+    }
+}
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dashboard',
         'USER': 'root',
-        'PASSWORD': 'Singh@7970',
+        
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+
         'HOST': 'localhost',  
         'PORT': '3306',
     }
