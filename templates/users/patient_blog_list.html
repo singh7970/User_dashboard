@@ -1,0 +1,16 @@
+<h2>Blog Posts</h2>
+
+{% for category, blogs in category_posts.items %}
+<h3>{{ category|title }}</h3>
+<ul>
+    {% for blog in blogs %}
+    <li>
+        <img src="{{ blog.image.url }}" alt="{{ blog.title }}" width="100">
+        <h3>{{ blog.title }}</h3>
+        <p>{{ blog.summary|truncatewords:15 }}...</p>
+    </li>
+    {% empty %}
+        <p>No blogs available.</p>
+    {% endfor %}
+</ul>
+{% endfor %}

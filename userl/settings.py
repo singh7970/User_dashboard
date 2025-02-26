@@ -9,6 +9,13 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+MEDIA_URL = '/media/'  # URL where media files will be served
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Directory where media files are stored
+
 
 from pathlib import Path
 
@@ -79,6 +86,16 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'dashboard',
+        'USER': 'root',
+        'PASSWORD': 'Singh@7970',
+        'HOST': 'localhost',  
+        'PORT': '3306',
     }
 }
 AUTH_USER_MODEL = 'app.CustomUser'

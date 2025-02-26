@@ -4,5 +4,22 @@
 <p>City: {{ user.city }}</p>
 <form method="post" action="{% url 'logout' %}">
     {% csrf_token %}
+   
+    <a href="{% url 'patient_blog_posts' %}" style="background-color: black; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">
+        SEE BLOG
+    </a>
+    
+    <a href="{% url 'create_blog' %}" style="background-color: rgb(172, 232, 107); color: rgb(227, 20, 20); padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">
+        CREATE BLOG
+    </a>
+    
+
+    <a href="{% url 'patient_blog_posts' %}" style="background-color: rgb(48, 32, 32); color: rgb(243, 168, 168); padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">
+        go to patient dashboard
+    </a>
+    
+    
+
+
     <button type="submit">Logout</button>
 </form>

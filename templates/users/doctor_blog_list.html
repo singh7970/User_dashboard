@@ -1,0 +1,12 @@
+<h2>My Blog Posts</h2>
+<ul>
+    {% for blog in blogs %}
+    <li>
+        <img src="{{ blog.image.url }}" alt="{{ blog.title }}" width="100">
+        <h3>{{ blog.title }}</h3>
+        <p>{{ blog.category }}</p>
+        <p>{{ blog.summary }}</p>
+        <p>Status: {% if blog.is_draft %}Draft{% else %}Published{% endif %}</p>
+    </li>
+    {% endfor %}
+</ul>

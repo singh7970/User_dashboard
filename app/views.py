@@ -3,6 +3,8 @@ from django.contrib.auth import login, authenticate, logout
 from .forms import CustomUserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from .models import BlogPost
+from .forms import BlogPostForm
 
 def signup(request):
     if request.method == "POST":
@@ -39,3 +41,38 @@ def dashboard(request):
     return redirect('login')
 
 
+
+
+
+
+
+# Doctor - Create a Blog Post
+@login_required
+def create_blog_post(request):
+    if request.user.user_type != 'doctor':
+        return redirect('dashboard')
+
+    if request.method == 'POST':
+        form = BlogPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            blog = form.save(commit=False)
+            blog.author = request.user
+            blog.save()
+            return redirect('dashboard')
+    else:
+        form = BlogPostForm()
+    return render(request, 'users/create_blog.html', {'form': form})
+
+# Doctor - View Their Blog Posts
+@login_required
+def doctor_blog_posts(request):
+    blogs = BlogPost.objects.filter(author=request.user)
+    return render(request, 'users/doctor_blog_list.html', {'blogs': blogs})
+
+# Patient - View Published Blog Posts by Category
+@login_required
+def patient_blog_posts(request):
+    categories = ['mental_health', 'heart_disease', 'covid19', 'immunization']
+    category_posts = {category: BlogPost.objects.filter(category=category, is_draft=False) for category in categories}
+    
+    return render(request, 'users/patient_blog_list.html', {'category_posts': category_posts})

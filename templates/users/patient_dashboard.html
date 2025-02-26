@@ -57,6 +57,12 @@
         <p><strong>Email:</strong> {{ user.email }}</p>
         <p><strong>City:</strong> {{ user.city }}</p>
     </div>
+
+    <a href="{% url 'patient_blog_posts' %}" style="background-color: black; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">
+        SEE BLOG
+    </a>
+    
+
     <h1><a href="{% url 'logout' %}">Logout</a></h1>
 
 
